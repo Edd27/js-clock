@@ -45,10 +45,12 @@ function getValues() {
 
 function setValues(values) {
   const { hour, minute, second, period, day, month, year } = values;
-  hourContainer.textContent = hour;
-  minuteContainer.textContent = minute;
+  const newHour = hour > 12 ? hour - 12 : hour;
+  hourContainer.textContent = newHour < 10 ? `0${newHour}` : newHour;
+  minuteContainer.textContent = minute < 10 ? `0${minute}` : minute;
   secondContainer.textContent = second < 10 ? `0${second}` : second;
   periodContainer.textContent = `"${period}"`;
   dayContainer.textContent = day < 10 ? `0${day}` : day;
   monthContainer.textContent = `"${MONTHS[month]}"`;
+  yearContainer.textContent = year;
 }
